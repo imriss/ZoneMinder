@@ -1,7 +1,7 @@
 # ZoneMinder
 
-FROM ubuntu:trusty
-MAINTAINER Kyle Johnson <kjohnson@gnulnx.net>
+FROM rafaelsoaresbr/archlinux
+MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Resynchronize the package index files 
 RUN apt-get update && \
