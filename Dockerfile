@@ -3,18 +3,12 @@
 FROM rafaelsoaresbr/archlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
-# Resynchronize the package index files 
-RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y \
-	libpolkit-gobject-1-dev build-essential libmysqlclient-dev libssl-dev libbz2-dev libpcre3-dev \
-	libdbi-perl libarchive-zip-perl libdate-manip-perl libdevice-serialport-perl libmime-perl libpcre3 \
-	libwww-perl libdbd-mysql-perl libsys-mmap-perl yasm cmake libjpeg-turbo8-dev \
-	libjpeg-turbo8 libtheora-dev libvorbis-dev libvpx-dev libx264-dev libmp4v2-dev libav-tools mysql-client \
-	apache2 php5 php5-mysql apache2-mpm-prefork libapache2-mod-php5 php5-cli \
-	mysql-server libvlc-dev libvlc5 libvlccore-dev libvlccore7 vlc-data libcurl4-openssl-dev \
-	libavformat-dev libswscale-dev libavutil-dev libavcodec-dev libavfilter-dev \
-	libavresample-dev libavdevice-dev libpostproc-dev libv4l-dev libtool libnetpbm10-dev \
-	libmime-lite-perl dh-autoreconf dpatch \
+# Required packages 
+RUN yaourt -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
+	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
+	perl-mime-tools perl perl-dbd-mysql perl-sys-mmap yasm cmake libjpeg-turbo \
+	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
+	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite dh-autoreconf patch \
 	&& apt-get clean
 
 # Copy local code into our container
