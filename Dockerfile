@@ -4,17 +4,16 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
-RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
-	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.pem \
-	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.pem \	
-	&& pacman -Syyu --noconfirm \
+# RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
+#	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.pem \
+#	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.pem 
+RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
-RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
-	&& ls -la  /usr/share/ca-certificates/trust-source/anchors \
+RUN GNUPGHOME='/root/.gnupg' dirmngr < /dev/null \ # -v --debug-level guru 
 	&& touch /root/.gnupg/dirmngr_ldapservers.conf \
-	&& GNUPGHOME='/root/.gnupg' gpg2 -v --debug-level guru --debug 1024 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
-	&& GNUPGHOME='/root/.gnupg' gpg2 -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
+	&& gpg2 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
+	&& gpg2 --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
 
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
