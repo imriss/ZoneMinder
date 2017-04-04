@@ -14,8 +14,9 @@ RUN pacman -Syyu --noconfirm \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
 	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
-	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch \
-	&& yaourt -S --needed --noconfirm perl-sys-mmap \
+	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch 
+RUN cd /tmp && yaourt --getpkgbuild aur/perl-sys-mmap && cd perl-sys-mmap && makepkg --pkg perl-sys-mmap USER root && ls -la \
+	&& pacman -U --noconfirm /tmp/perl-sys-mmap/perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz \
 	&& pacman -Scc --noconfirm
 
 # Copy local code into our container
