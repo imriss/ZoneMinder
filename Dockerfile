@@ -6,6 +6,7 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 #
 RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade \
+	&& gpg --homedir /root/.gnupg \
 	&& chmod 700 /root/.gnupg \
 	&& chmod 600 /root/.gnupg/* 
 RUN gpg --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
