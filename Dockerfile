@@ -12,6 +12,8 @@ RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 
 # bug (https://bbs.archlinux.org/viewtopic.php?id=223239)
 RUN pacman -S --needed --noconfirm wget \
+	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/readline-7.0.001-1-x86_64.pkg.tar.xz -O /tmp/readline.tar.xz \
+	&& pacman -U --noconfirm /tmp/readline.tar.xz \
 	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
 	&& pacman -U --noconfirm /tmp/gnupg.tar.xz	
 
