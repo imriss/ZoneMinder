@@ -36,7 +36,7 @@ RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
 	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
 
 # pacaur
-# ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
+# DDADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
 ADD ./aur.sh /usr/sbin/aur.sh
 RUN chmod +x /usr/sbin/aur.sh
 ADD https://raw.githubusercontent.com/greyltc/docker-archlinux-aur/master/add-aur.sh /usr/sbin/add-aur
