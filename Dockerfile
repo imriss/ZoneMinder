@@ -5,8 +5,8 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
 RUN pacman -Syyu --noconfirm \
-	wget http://repo.archlinux.fr/x86_64/yaourt-1.8.1-1-any.pkg.tar.xz -O /tmp/yaourt.tar.xz \
-	pacman -U --noconfirm /tmp/yaourt.tar.xz \
+	&& wget http://repo.archlinux.fr/x86_64/yaourt-1.8.1-1-any.pkg.tar.xz -O /tmp/yaourt.tar.xz \
+	&& pacman -U --noconfirm /tmp/yaourt.tar.xz \
 	&& pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
 	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
