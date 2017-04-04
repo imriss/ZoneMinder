@@ -3,6 +3,9 @@
 FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
+#
+RUN pacman -Syyu --noconfirm
+
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
 RUN chmod +x /usr/sbin/aur.sh
@@ -15,7 +18,6 @@ ADD ./perl-sys-mmap.pkg.tar.xz /tmp/perl-sys-mmap.pkg.tar.xz
 WORKDIR /tmp
 RUN ls -la 
 RUN pacman -U --noconfirm perl-sys-mmap.pkg.tar.xz
-RUN pacman -Syyu --noconfirm
 RUN pacman -S --needed --noconfirm wget \
 	&& wget http://repo.archlinux.fr/x86_64/package-query-1.8-1-x86_64.pkg.tar.xz -O /tmp/package-query.tar.xz \
 	&& pacman -U --noconfirm /tmp/package-query.tar.xz \	
