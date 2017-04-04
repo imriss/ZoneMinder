@@ -5,6 +5,8 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
 RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
+	&& cp  /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.pem \
+	&& cp  /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.pem \	
 	&& pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
