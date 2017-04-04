@@ -17,7 +17,11 @@ RUN pacman -S --needed --noconfirm wget readline \
 	&& wget https://archive.archlinux.org/repos/2016/11/10/core/os/x86_64/readline-6.3.008-4-x86_64.pkg.tar.xz -O /tmp/readline.tar.xz \
 	&& pacman -U --noconfirm /tmp/readline.tar.xz \
 	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
-	&& pacman -U --noconfirm /tmp/gnupg.tar.xz	
+	&& pacman -U --noconfirm /tmp/gnupg.tar.xz \
+	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnutls-3.4.17-1-x86_64.pkg.tar.xz -O /tmp/gnutls.tar.xz \
+	&& pacman -U --noconfirm /tmp/gnutls.tar.xz 
+	
+	
 
 RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
 	&& ls -la  /usr/share/ca-certificates/trust-source/anchors \
