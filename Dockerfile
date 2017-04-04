@@ -7,8 +7,8 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
-RUN gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
-	&& gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
+RUN GNUPGHOME='/root/.gnupg/' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
+	&& GNUPGHOME='/root/.gnupg/' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
 
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
