@@ -37,9 +37,10 @@ RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
 
 # pacaur
 # DDADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
+# DDADD https://raw.githubusercontent.com/greyltc/docker-archlinux-aur/master/add-aur.sh /usr/sbin/add-aur
 ADD ./aur.sh /usr/sbin/aur.sh
 RUN chmod +x /usr/sbin/aur.sh
-ADD https://raw.githubusercontent.com/greyltc/docker-archlinux-aur/master/add-aur.sh /usr/sbin/add-aur
+ADD ./add-aur.sh /usr/sbin/add-aur
 RUN chmod +x /usr/sbin/add-aur
 RUN add-aur docker
 
