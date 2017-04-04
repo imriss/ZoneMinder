@@ -6,6 +6,8 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 # Required packages 
 RUN pacman -Syyu --noconfirm \
 	&& pacman -S --needed --noconfirm wget \
+	&& wget http://repo.archlinux.fr/x86_64/package-query-1.8-1-x86_64.pkg.tar.xz -O /tmp/package-query.tar.xz \
+	&& pacman -U --noconfirm /tmp/package-query.tar.xz \	
 	&& wget http://repo.archlinux.fr/x86_64/yaourt-1.8.1-1-any.pkg.tar.xz -O /tmp/yaourt.tar.xz \
 	&& pacman -U --noconfirm /tmp/yaourt.tar.xz \
 	&& pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
