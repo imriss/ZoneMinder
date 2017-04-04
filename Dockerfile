@@ -4,7 +4,7 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
-RUN ls ls /usr/share/ca-certificates/trust-source/anchors/ \
+RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 	&& pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
