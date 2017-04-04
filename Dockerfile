@@ -11,7 +11,8 @@ RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 	&& pacman-db-upgrade 
 
 # bug (https://bbs.archlinux.org/viewtopic.php?id=223239)
-RUN wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
+RUN pacman -S --needed --noconfirm wget \
+	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
 	&& pacman -U --noconfirm /tmp/gnupg.tar.xz \	
 
 RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
