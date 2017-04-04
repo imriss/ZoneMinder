@@ -7,7 +7,7 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
-RUN GNUPGHOME='/root/.gnupg' dirmngr < /dev/null &> /dev/null \
+RUN GNUPGHOME='/root/.gnupg' dirmngr -v < /dev/null &> /dev/null \
 	&& GNUPGHOME='/root/.gnupg' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
 	&& GNUPGHOME='/root/.gnupg' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
 
