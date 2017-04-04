@@ -3,6 +3,13 @@
 FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
+# pacaur
+ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
+RUN chmod +x /usr/sbin/aur.sh
+ADD https://raw.githubusercontent.com/greyltc/docker-archlinux-aur/master/add-aur.sh /usr/sbin/add-aur
+RUN chmod +x /usr/sbin/add-aur
+RUN add-aur docker
+
 # Required packages 
 ADD ./perl-sys-mmap.pkg.tar.xz /tmp/perl-sys-mmap.pkg.tar.xz
 WORKDIR /tmp
