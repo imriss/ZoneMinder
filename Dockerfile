@@ -5,13 +5,15 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
 RUN pacman -Syyu --noconfirm \
+	wget http://repo.archlinux.fr/x86_64/yaourt-1.8.1-1-any.pkg.tar.xz -O /tmp/yaourt.tar.xz \
+	pacman -U --noconfirm /tmp/yaourt.tar.xz \
 	&& pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
 	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
 	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch yaourt \
 	&& yaourt -S perl-sys-mmap \
-	&& pacman clean
+	&& pacman -Scc --noconfirm
 
 # Copy local code into our container
 ADD . /ZoneMinder
