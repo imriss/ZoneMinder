@@ -4,11 +4,10 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
-RUN pacman -S --force --noconfirm pacman
-ADD ./perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz /tmp/perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz
+ADD ./perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz /tmp/perl-sys-mmap.pkg.tar.xz
 WORKDIR /tmp
 RUN ls -la 
-RUN pacman -U --noconfirm perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz
+RUN pacman -U --noconfirm perl-sys-mmap.pkg.tar.xz
 RUN pacman -Syyu --noconfirm
 RUN pacman -S --needed --noconfirm wget \
 	&& wget http://repo.archlinux.fr/x86_64/package-query-1.8-1-x86_64.pkg.tar.xz -O /tmp/package-query.tar.xz \
