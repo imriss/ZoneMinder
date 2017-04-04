@@ -15,7 +15,7 @@ RUN pacman -Syyu --noconfirm \
 	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
 	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch \
-	&& yaourt -S perl-sys-mmap \
+	&& yaourt -S --needed --noconfirm perl-sys-mmap \
 	&& pacman -Scc --noconfirm
 
 # Copy local code into our container
