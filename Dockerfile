@@ -4,7 +4,8 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
-RUN pacman -Syyu --noconfirm \
+RUN ls ls /usr/share/ca-certificates/trust-source/anchors/ \
+	&& pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
 RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
