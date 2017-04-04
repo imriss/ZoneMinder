@@ -1,6 +1,6 @@
 # ZoneMinder
 
-FROM github.com/rafaelsoaresbr/archlinux
+FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
