@@ -5,9 +5,9 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
 RUN pacman -Syyu --noconfirm \
-	&& pacman-db-upgrade \
-	&& gpg --keyserver https://pgp.mit.edu --recv-keys 1D1F0DC78F173680 \
-	&& gpg --keyserver https://pgp.mit.edu --recv-keys 1EB2638FF56C0C53
+	&& pacman-db-upgrade 
+RUN gpg --keyserver pgp.mit.edu --recv-keys 1D1F0DC78F173680 \
+	&& gpg --keyserver pgp.mit.edu --recv-keys 1EB2638FF56C0C53
 
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
