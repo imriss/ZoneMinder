@@ -4,6 +4,7 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
+RUN pacman -S --force --noconfirm pacman
 ADD ./perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz /tmp/perl-sys-mmap-0.17-1-x86_64.pkg.tar.xz
 WORKDIR /tmp
 RUN ls -la 
