@@ -17,7 +17,7 @@ RUN pacman -S --needed --noconfirm wget \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
 	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
-	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch 
+	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch \
 	&& pacman -Scc --noconfirm
 
 # Copy local code into our container
