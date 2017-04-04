@@ -4,13 +4,14 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
-RUN pacman -Syyu --noconfirm
-RUN pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
+RUN pacman -Syyu --noconfirm \
+	&& pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
-	perl-mime-tools perl perl-dbd-mysql perl-sys-mmap yasm cmake libjpeg-turbo \
+	perl-mime-tools perl perl-dbd-mysql yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
-	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch \
-	&& apt-get clean
+	mariadb vlc ffmpeg v4l-utils libtool netpbm perl-mime-lite patch yaourt \
+	&& yaourt -S perl-sys-mmap \
+	&& pacman clean
 
 # Copy local code into our container
 ADD . /ZoneMinder
