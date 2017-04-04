@@ -4,7 +4,10 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
-RUN pacman -Syyu --noconfirm
+RUN pacman -Syyu --noconfirm \
+	&& pacman-db-upgrade \
+	&& gpg --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
+	&& gpg --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
 
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
