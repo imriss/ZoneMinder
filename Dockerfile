@@ -8,8 +8,8 @@ RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
 RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
-	&& GNUPGHOME='/root/.gnupg' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
-	&& GNUPGHOME='/root/.gnupg' gpg2 -v --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
+	&& GNUPGHOME='/root/.gnupg' gpg2 -v --debug-level guru --recv-keys --keyserver https://pgp.mit.edu 1D1F0DC78F173680 \
+	&& GNUPGHOME='/root/.gnupg' gpg2 -v --debug-level guru --recv-keys --keyserver https://pgp.mit.edu 1EB2638FF56C0C53
 
 # pacaur
 ADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
