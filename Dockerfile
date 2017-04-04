@@ -6,7 +6,6 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 #
 RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade \
-	&& mkdir /root/.gnupg \
 	&& gpg --homedir /root/.gnupg \
 	&& chmod 700 /root/.gnupg \
 	&& chmod 600 /root/.gnupg/* 
