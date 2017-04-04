@@ -10,7 +10,8 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 RUN pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade 
 
-RUN GNUPGHOME='/root/.gnupg' dirmngr < /dev/null \ # -v --debug-level guru 
+# -v --debug-level guru 
+RUN GNUPGHOME='/root/.gnupg' dirmngr < /dev/null \ 
 	&& touch /root/.gnupg/dirmngr_ldapservers.conf \
 	&& gpg2 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
 	&& gpg2 --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
