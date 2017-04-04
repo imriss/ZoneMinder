@@ -4,7 +4,7 @@ FROM imriss/rarchlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 # Required packages 
-RUN yaourt -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
+RUN pacman -S --needed --noconfirm polkit base-devel libmysqlclient openssl bzip2 \
 	perl-dbi perl-date-manip perl-archive-zip perl-device-serialport \
 	perl-mime-tools perl perl-dbd-mysql perl-sys-mmap yasm cmake libjpeg-turbo \
 	libtheora libvorbis libvpx libx264 libmp4v2 gst-libav mysql-clients apache php \
