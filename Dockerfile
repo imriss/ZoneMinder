@@ -24,9 +24,7 @@ RUN pacman -S --needed --noconfirm wget readline \
 	&& pacman -S --force --noconfirm libgcrypt \
 	&& pacman -S --force --noconfirm bash \
 	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
-	&& pacman -U --noconfirm /tmp/gnupg.tar.xz \
-	&& rm /usr/lib/libreadline.so.6 \
-	&& pacman -Syyu --noconfirm 
+	&& pacman -U --noconfirm /tmp/gnupg.tar.xz 
 
 	
 	
@@ -35,7 +33,9 @@ RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
 	&& ls -la  /usr/share/ca-certificates/trust-source/anchors \
 	&& touch /root/.gnupg/dirmngr_ldapservers.conf \
 	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --debug 1024 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
-	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53 
+	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53 \
+	&& rm /usr/lib/libreadline.so.6 \
+	&& pacman -Syyu --noconfirm 
 
 # pacaur
 # DDADD https://raw.githubusercontent.com/stuartpb/aur.sh/master/aur.sh /usr/sbin/aur.sh
