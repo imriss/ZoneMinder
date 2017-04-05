@@ -25,7 +25,8 @@ sed -i "s,PKGEXT='.pkg.tar.xz',PKGEXT='.pkg.tar',g" /etc/makepkg.conf
 
 # install pacaur
 su $AUR_USER -c 'cd; bash /usr/sbin/aur.sh -si --noconfirm --needed cower pacaur'
-su $AUR_USER -c 'cd; rm -rf cower pacaur'
+cd; cd cower; pacman -U cower.tar.xz
+# su $AUR_USER -c 'cd; rm -rf cower pacaur'
 
 # do a pacaur system update
 su $AUR_USER -c 'pacaur -Syyua --noprogressbar --noedit --noconfirm'
