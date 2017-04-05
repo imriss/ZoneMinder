@@ -8,7 +8,7 @@ curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$p.tar.gz" |tar xz
 cd "$p"
 echo "makepkg -V --skippgpcheck ${@##[^\-]*}"
 makepkg -V --skippgpcheck ${@##[^\-]*}
-echo "d"
+echo "$d"
 ls -la
 # su root -c 'pacman -U $p.tar.xz'
 done
