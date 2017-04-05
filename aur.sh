@@ -9,5 +9,5 @@ cd "$p"
 echo "makepkg -V --skippgpcheck ${@##[^\-]*}"
 makepkg -V --skippgpcheck ${@##[^\-]*}
 ls -la
-su pacman -U $p.tar.xz
+su -c pacman -U $p.tar.xz
 done
