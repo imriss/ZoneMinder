@@ -8,7 +8,7 @@ RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.pem \
 	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.pem \	
 	&& pacman -Syyu --noconfirm \
-	&& pacman -S findutils \
+	&& pacman -S findutils --noconfirm \
 	&& pacman-db-upgrade 
 
 #	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/readline-7.0.001-1-x86_64.pkg.tar.xz -O /tmp/readline.tar.xz \
