@@ -10,7 +10,7 @@ cd "$p"
 echo "makepkg -V --skippgpcheck ${@##[^\-]*}"
 makepkg -V --skippgpcheck ${@##[^\-]*}
 echo "$d"
-echo <(/usr/sbin/find / -name "$p.tar*" 2>/dev/null)
+/usr/sbin/find / -name "$p.tar*" 
 ls -lar /home
 # su root -c 'pacman -U $p.tar.xz'
 done
