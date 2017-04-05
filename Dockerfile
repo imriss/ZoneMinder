@@ -17,23 +17,23 @@ RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 #	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnutls-3.4.17-1-x86_64.pkg.tar.xz -O /tmp/gnutls.tar.xz \
 #	&& pacman -U --noconfirm /tmp/gnutls.tar.xz 
 # bug (https://bbs.archlinux.org/viewtopic.php?id=223239)
-RUN pacman -S --needed --noconfirm wget readline \
-	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/readline-7.0.001-1-x86_64.pkg.tar.xz -O /tmp/readline.tar.xz \
-	&& pacman -U --noconfirm /tmp/readline.tar.xz \
-	&& ln -s /usr/lib/libreadline.so.7 /usr/lib/libreadline.so.6 \
-	&& pacman -S --force --noconfirm libgcrypt \
-	&& pacman -S --force --noconfirm bash \
-	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
-	&& pacman -U --noconfirm /tmp/gnupg.tar.xz 
+# RUN pacman -S --needed --noconfirm wget readline \
+#	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/readline-7.0.001-1-x86_64.pkg.tar.xz -O /tmp/readline.tar.xz \
+#	&& pacman -U --noconfirm /tmp/readline.tar.xz \
+#	&& ln -s /usr/lib/libreadline.so.7 /usr/lib/libreadline.so.6 \
+#	&& pacman -S --force --noconfirm libgcrypt \
+#	&& pacman -S --force --noconfirm bash \
+#	&& wget https://archive.archlinux.org/repos/2016/12/21/core/os/x86_64/gnupg-2.1.16-2-x86_64.pkg.tar.xz -O /tmp/gnupg.tar.xz \
+#	&& pacman -U --noconfirm /tmp/gnupg.tar.xz 
 
 	
 	
 
-RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
-	&& ls -la  /usr/share/ca-certificates/trust-source/anchors \
-	&& touch /root/.gnupg/dirmngr_ldapservers.conf \
-	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --debug 1024 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
-	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53 
+#RUN GNUPGHOME='/root/.gnupg' dirmngr -v --debug-level guru < /dev/null \
+#	&& ls -la  /usr/share/ca-certificates/trust-source/anchors \
+#	&& touch /root/.gnupg/dirmngr_ldapservers.conf \
+#	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --debug 1024 --recv-keys --keyserver hkp://pgp.mit.edu:80 1D1F0DC78F173680 \
+#	&& GNUPGHOME='/root/.gnupg' gpg -v --debug-level guru --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53 
 
 
 # pacaur
@@ -43,8 +43,6 @@ ADD ./aur.sh /usr/sbin/aur.sh
 RUN chmod +x /usr/sbin/aur.sh
 ADD ./add-aur.sh /usr/sbin/add-aur
 RUN chmod +x /usr/sbin/add-aur
-RUN rm /usr/lib/libreadline.so.6 
-RUN pacman -Syyu --noconfirm 
 RUN add-aur docker
 
 # Required packages 
