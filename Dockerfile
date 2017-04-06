@@ -91,7 +91,8 @@ RUN ./zmlinkcontent.sh
 ADD utils/docker/start.sh /tmp/start.sh
 
 # give files in /usr/local/share/zoneminder/
-RUN chown -R www-data:www-data /usr/local/share/zoneminder/
+RUN echo "grep www-data /etc/passwd" \
+	&& chown -R www-data:www-data /usr/local/share/zoneminder/
 
 # Adding apache virtual hosts file
 ADD utils/docker/apache-vhost /etc/apache2/sites-available/000-default.conf
