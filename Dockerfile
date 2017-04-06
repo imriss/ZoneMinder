@@ -48,10 +48,11 @@ RUN chmod +x /usr/sbin/add-aur
 RUN add-aur docker
 
 # Required packages 
-ADD ./perl-sys-mmap.pkg.tar.xz /tmp/perl-sys-mmap.pkg.tar.xz
-WORKDIR /tmp
-RUN ls -la 
-RUN pacman -U --noconfirm perl-sys-mmap.pkg.tar.xz
+# ADD ./perl-sys-mmap.pkg.tar.xz /tmp/perl-sys-mmap.pkg.tar.xz
+# WORKDIR /tmp
+# RUN ls -la 
+# RUN pacman -U --noconfirm perl-sys-mmap.pkg.tar.xz
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm perl-sys-mmap'
 RUN pacman -S --needed --noconfirm wget \
 	&& wget http://repo.archlinux.fr/x86_64/package-query-1.8-1-x86_64.pkg.tar.xz -O /tmp/package-query.tar.xz \
 	&& pacman -U --noconfirm /tmp/package-query.tar.xz \	
