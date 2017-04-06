@@ -8,7 +8,7 @@ echo "https://aur.archlinux.org/cgit/aur.git/snapshot/$p.tar.gz"
 curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$p.tar.gz" |tar xz
 cd "$p"
 echo "makepkg -V --skippgpcheck ${@##[^\-]*}"
-makepkg -V --skippgpcheck ${@##[^\-]*}
+makepkg --skippgpcheck ${@##[^\-]*}
 echo "$d"
 /usr/sbin/find / -name "$p.*" 
 ls -laR "$d"
