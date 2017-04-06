@@ -26,8 +26,10 @@ sed -i "s,PKGEXT='.pkg.tar.xz',PKGEXT='.pkg.tar',g" /etc/makepkg.conf
 # install pacaur
 su $AUR_USER -c 'cd; bash /usr/sbin/aur.sh -si --noconfirm --needed cower pacaur'
 echo "step 1"
-export editor=nano
+export editor=vi
+export visual=vi
 echo "$editor"
+echo "$visual"
 # su $AUR_USER -c 'cd; rm -rf cower pacaur'
 
 # do a pacaur system update
