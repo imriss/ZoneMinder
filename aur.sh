@@ -11,6 +11,6 @@ echo "makepkg -V --skippgpcheck ${@##[^\-]*}"
 makepkg -V --skippgpcheck ${@##[^\-]*}
 echo "$d"
 /usr/sbin/find / -name "$p.*" 
-ls -laR /
+ls -laR "$d"
 # su root -c 'pacman -U $p.tar.xz'
 done
