@@ -8,7 +8,7 @@ RUN ls /usr/share/ca-certificates/trust-source/anchors/ \
 	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_class3.pem \
 	&& cp /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.crt /usr/share/ca-certificates/trust-source/anchors/CAcert.org_root.pem \	
 	&& pacman -Syyu --noconfirm \
-	&& pacman -S findutils nano --needed --noconfirm \
+	&& pacman -S findutils nano vi --needed --noconfirm \
 	&& pacman-db-upgrade \
 	&& export editor=nano
 
