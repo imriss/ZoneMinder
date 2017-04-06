@@ -76,10 +76,13 @@ WORKDIR /ZoneMinder
 
 # Configure ZoneMinder
 #RUN ./configure --with-libarch=lib/$DEB_HOST_GNU_TYPE --disable-debug --host=$DEB_HOST_GNU_TYPE --build=$DEB_BUILD_GNU_TYPE --with-mysql=/usr  --with-webdir=/var/www/zm --with-ffmpeg=/usr --with-cgidir=/usr/lib/cgi-bin --with-webuser=www-data --with-webgroup=www-data --enable-mmap=yes --enable-onvif ZM_SSL_LIB=openssl ZM_DB_USER=zm ZM_DB_PASS=zm
-RUN cmake .
+RUN export "PATH=$PATH:/usr/bin/core_perl" \
+	&& cmake .
 
 # Build & install ZoneMinder
-RUN make && make install
+RUN export "PATH=$PATH:/usr/bin/core_perl" \
+	&& make \
+	&& make install
 
 # ensure writable folders
 RUN ./zmlinkcontent.sh
