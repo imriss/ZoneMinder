@@ -104,6 +104,10 @@ ADD utils/docker/phpdate.ini /etc/php5/apache2/conf.d/25-phpdate.ini
 # Expose http ports
 EXPOSE 80
 
+# MySQL socket
+RUN find / -type s \
+	&& ls /var/lib/mysql
+
 # Initial database and apache setup:
 RUN "/ZoneMinder/utils/docker/setup.sh"
 
