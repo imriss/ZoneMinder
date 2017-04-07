@@ -1,6 +1,6 @@
 # ZoneMinder
 
-FROM imriss/rarchlinux
+FROM imriss/archlinux
 MAINTAINER Reza Farrahi <imriss@ieee.org>
 
 #
