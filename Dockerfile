@@ -105,8 +105,9 @@ ADD utils/docker/phpdate.ini /etc/php5/apache2/conf.d/25-phpdate.ini
 EXPOSE 80
 
 # MySQL socket
-RUN find / -type s \
+RUN /usr/sbin/find / -type s \
 	&& ls /var/lib/mysql
+RUN findd
 
 # Initial database and apache setup:
 RUN "/ZoneMinder/utils/docker/setup.sh"
