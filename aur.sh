@@ -11,7 +11,7 @@ echo "makepkg --skippgpcheck ${@##[^\-]*}"
 makepkg --skippgpcheck ${@##[^\-]*}
 echo "$d"
 # /usr/sbin/find / -name "$p.*" 
-# /usr/sbin/find / -type s 
+/usr/sbin/find / -name mysqld.sock
 # ls -laR "$d"
 # su root -c 'pacman -U $p.tar.xz'
 done
