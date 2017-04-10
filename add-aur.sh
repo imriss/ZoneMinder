@@ -30,6 +30,7 @@ export editor=vi
 export visual=vi
 echo "$editor"
 echo "$visual"
+/usr/sbin/find / -name mysqld.sock
 # su $AUR_USER -c 'cd; rm -rf cower pacaur'
 
 # do a pacaur system update
