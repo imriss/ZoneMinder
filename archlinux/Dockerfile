@@ -68,10 +68,12 @@ RUN pacman -S --needed --noconfirm wget \
 # Copy local code into our container
 # ADD .. /ZoneMinder
 RUN cd / \
-	&& git clone --depth=1 https://github.com/ZoneMinder/ZoneMinder
+	&& git clone --depth=1 https://github.com/ZoneMinder/ZoneMinder  
 
 # Change into the ZoneMinder directory
 WORKDIR /ZoneMinder
+RUN git submodule sync --recursive \
+	&& git submodule update --init --recursive 
 
 # Setup the ZoneMinder build environment
 #RUN aclocal && autoheader && automake --force-missing --add-missing && autoconf
