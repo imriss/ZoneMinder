@@ -66,7 +66,9 @@ RUN pacman -S --needed --noconfirm wget \
 	&& pacman -Scc --noconfirm
 
 # Copy local code into our container
-ADD .. /ZoneMinder
+# ADD .. /ZoneMinder
+RUN cd / \
+	&& git clone --depth=1 https://github.com/ZoneMinder/ZoneMinder
 
 # Change into the ZoneMinder directory
 WORKDIR /ZoneMinder
