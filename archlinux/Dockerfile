@@ -92,7 +92,7 @@ RUN export "PATH=$PATH:/usr/bin/core_perl" \
 RUN ./zmlinkcontent.sh
 
 # Adding the start script
-ADD utils/docker/start.sh /tmp/start.sh
+RUN cp /ZoneMinder/utils/docker/start.sh /tmp/start.sh
 
 # give files in /usr/local/share/zoneminder/
 RUN useradd -m www-data \
@@ -102,8 +102,8 @@ RUN useradd -m www-data \
 	&& chown -R www-data:www-data /usr/local/share/zoneminder/
 
 # Adding apache virtual hosts file
-ADD utils/docker/apache-vhost /etc/apache2/sites-available/000-default.conf
-ADD utils/docker/phpdate.ini /etc/php5/apache2/conf.d/25-phpdate.ini
+RUN cp /ZoneMinder/utils/docker/apache-vhost /etc/apache2/sites-available/000-default.conf \
+	&& cp /ZoneMinder/utils/docker/phpdate.ini /etc/php5/apache2/conf.d/25-phpdate.ini
 
 # Expose http ports
 EXPOSE 80
